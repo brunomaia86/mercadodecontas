@@ -1,57 +1,27 @@
 package mercadodecontas.model;
+
 import java.io.Serializable;
 
-import org.hibernate.proxy.HibernateProxyHelper;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-/**
- * Base class for all JPA entities.
- * 
- * @author Rodrigo Uchôa (http://rodrigouchoa.wordpress.com)
- *
- */
-public abstract class BaseEntity<T extends Serializable> {
+@MappedSuperclass
+public abstract class BaseEntity<ID> implements Serializable {
+
+	private static final long serialVersionUID = 1365104865526926186L;
 	
-	
-	/**
-	 * This method should return the primary key.
-	 * 
-	 * @return
-	 */
-	public abstract T getId();
-	
-	/* As a starting point, we provide a basic mean for entities
-	 * to test for equality using their "id".
-	 * 
-	 * Please note that THIS IS NOT ALWAYS ACCEPTABLE since newly generated
-	 * ids might break Set/Collection semantics. Please refer to the documentarion
-	 * before doing something like this.
-	 * 
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (!(obj instanceof BaseEntity)) {
-			return false;
-		}
-		if (getId() == null || ((BaseEntity<?>) obj).getId() == null) {
-			return false;
-		}
-		if (!getId().equals(((BaseEntity<?>) obj).getId())) {
-			return false;
-		}
-		if (!HibernateProxyHelper.getClassWithoutInitializingProxy(obj)
-				.isAssignableFrom(this.getClass())) {
-			return false;
-		}
-		return true;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private ID id;
+
+	public ID getId() {
+		return id;
 	}
-	
-	@Override
-	public int hashCode() {
-		return getId() == null ? super.hashCode() : getId().hashCode();
+
+	public void setId(ID id) {
+		this.id = id;
 	}
 
 }
