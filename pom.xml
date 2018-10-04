@@ -13,78 +13,107 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-
-		<servlet.api>3.1.0</servlet.api>
-
-		<!-- JSF -->
-		<jsf.api>2.3</jsf.api>
-		<jsf.impl>2.3.2</jsf.impl>
-		<primefaces>6.1</primefaces>
-
-		<!-- CDI -->
-		<cdi.api>2.0</cdi.api>
-		<cdi.impl>3.0.1.Final</cdi.impl>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${servlet.api}</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- JSF -->
-		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>javax.faces-api</artifactId>
-			<version>${jsf.api}</version>
-			<scope>provided</scope>
-		</dependency>
+		<!-- Mojarra (implementacao do JSF) -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>${jsf.impl}</version>
+			<version>2.4.0</version>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!-- PrimeFaces (biblioteca de componentes) -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>${primefaces}</version>
+			<version>6.2</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Log4J -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Commons Logging (abstrai a implementação de logging) -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
 		</dependency>
 
 		<!-- CDI -->
 		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>${cdi.api}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
-			<artifactId>weld-servlet-shaded</artifactId>
-			<version>${cdi.impl}</version>
-			<scope>runtime</scope>
+			<artifactId>weld-servlet</artifactId>
+			<version>2.4.8.Final</version>
+			<scope>compile</scope>
 		</dependency>
+
 
 		<!-- HIBERNATE -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
+			<artifactId>hibernate-core</artifactId>
 			<version>5.3.6.Final</version>
 		</dependency>
-
-		<!--  -->
+		
+		<!-- Implementação de EntityManager da JPA -->
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>8.0</version>
-			<scope>provided</scope>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.3.6.Final</version>
+			<scope>compile</scope>
 		</dependency>
 
-		<!-- POSTGRES DRIVER -->
-		<!-- <dependency> <groupId>org.postgresql</groupId> <artifactId>postgresql</artifactId> 
-			</dependency> -->
+		<!-- Implementacao do Bean Validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>6.0.13.Final</version>
+			<scope>compile</scope>
+		</dependency>
+
+		
+
+		<!-- Driver Postgres -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.2.5</version>
+		</dependency>
+
+
 	</dependencies>
+
+	<build>
+		<finalName>MercadoDeCompras</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
+
 
 </project>
