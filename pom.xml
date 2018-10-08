@@ -6,7 +6,7 @@
 	<artifactId>mercadodecontas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Mercado de Contas</name>
+	<name>Mercado De Compras</name>
 	<description>Sistema de gestão de contas domésticas</description>
 
 	<properties>

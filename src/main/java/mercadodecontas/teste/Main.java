@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import mercadodecontas.model.FatoFinanceiro;
 import mercadodecontas.model.Pessoa;
 import mercadodecontas.model.enums.Status;
+import mercadodecontas.model.enums.TipoFatoFinanceiro;
 
 public class Main {
 
@@ -30,6 +31,7 @@ public class Main {
 		fato.setData(new Date());
 		fato.setResponsavel(bruno);
 		fato.setStatus(Status.EFETUADO);
+		fato.setTipoFatoFinanceiro(TipoFatoFinanceiro.PROVENTO);
 		
 		manager.persist(bruno);
 		manager.persist(fato);
