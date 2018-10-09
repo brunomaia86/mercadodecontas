@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import mercadodecontas.model.FatoFinanceiro;
 
-@RequestScoped
+@ViewScoped
 @Named
 public class CadastroFatoFinanceiroBean implements Serializable {
 
@@ -20,6 +20,7 @@ public class CadastroFatoFinanceiroBean implements Serializable {
 
 	public void salvar() {
 		listaFatosFinanceiros.add(fatoFinanceiro);
+		fatoFinanceiro = new FatoFinanceiro();
 	}
 
 	public FatoFinanceiro getFatoFinanceiro() {
@@ -37,5 +38,5 @@ public class CadastroFatoFinanceiroBean implements Serializable {
 	public void setListaFatosFinanceiros(List<FatoFinanceiro> listaFatosFinanceiros) {
 		this.listaFatosFinanceiros = listaFatosFinanceiros;
 	}
-
+	
 }

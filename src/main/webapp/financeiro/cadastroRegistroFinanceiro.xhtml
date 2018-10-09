@@ -15,7 +15,7 @@
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
 					<p:button value="Novo" outcome="/financeiro/cadastroRegistroFinanceiro.xhtml" />
-					<p:commandButton value="Salvar" action="#{cadastroFatoFinanceiroBean.salvar}" update="lista-fatos" />
+					<p:commandButton value="Salvar" action="#{cadastroFatoFinanceiroBean.salvar}" update="painel lista-fatos" />
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
@@ -25,8 +25,7 @@
 
 			<p:panelGrid id="painel" columns="2"
 				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
-				<p:outputLabel value="Data Fato Financeiro"
-					for="data-fato-financeiro" />
+				<p:outputLabel value="Data Fato Financeiro" for="data-fato-financeiro" />
 				<p:calendar id="data-fato-financeiro"
 					value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.data}"
 					effect="fold" showOn="button" pattern="dd-MM-yyyy" mask="true" />
@@ -56,9 +55,31 @@
 			</p:panelGrid>
 		</h:form>
 		
-		<p:dataTable id="lista-fatos" value="#{cadastroFatoFinanceiroBean.listaFatosFinanceiros}" var="fato">
-			<p:column headerText="Data">
-				<h:outputText value="#{fato.data}" />
+		<p:dataTable id="lista-fatos" value="#{cadastroFatoFinanceiroBean.listaFatosFinanceiros}" 
+				sortBy="#{fato.data}" rows="10" paginator="true" paginatorPosition="bottom"
+				rowsPerPageTemplate="10, 20, 30"  paginatorAlwaysVisible="false"
+				var="fato" style="margin-top: 10px">
+			<p:column headerText="Data" sortBy="#{fato.data}" style="text-align: center" width="90">
+				<h:outputText value="#{fato.data}">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Responsavel" style="text-align: center" width="200" sortBy="#{fato.responsavel.nome}">
+				<h:outputText value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.responsavel.nome}" />
+			</p:column>
+			<p:column headerText="Status" sortBy="#{fato.status}" width="150">
+				<h:outputText value="#{fato.status}" />
+			</p:column>
+			<p:column headerText="Tipo Fato Financeiro" sortBy="#{fato.tipoFatoFinanceiro}" width="150">
+				<h:outputText value="#{fato.tipoFatoFinanceiro}" />
+			</p:column>
+			<p:column headerText="Valor" sortBy="#{fato.valor}" width="120" style="text-align: right">
+				<h:outputText value="#{fato.valor}">
+					<f:convertNumber type="currency" />
+				</h:outputText>
+			</p:column>
+			<p:column headerText="Descrição">
+				<h:outputText value="#{fato.descricao}" />
 			</p:column>
 		</p:dataTable>
 

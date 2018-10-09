@@ -21,7 +21,6 @@
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
 			<version>2.4.0</version>
-			<scope>runtime</scope>
 		</dependency>
 
 		<!-- PrimeFaces (biblioteca de componentes) -->
