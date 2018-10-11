@@ -1,25 +1,28 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <ui:composition template="/WEB-INF/template/layoutPadrao.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-
+	
 	<ui:define name="titulo">Novo Registro</ui:define>
 	
 	<ui:define name="corpo">
-		<h1>Novo Registro Financeiro</h1>
-		
+		<h1>Cadastrar Registro(s) Financeiro(s)</h1>
 		<h:form>
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
-					<p:button value="Novo" outcome="/financeiro/cadastroRegistroFinanceiro.xhtml" />
-					<p:commandButton value="Salvar" action="#{cadastroFatoFinanceiroBean.salvar}" update="painel lista-fatos" />
+					<p:commandButton value="Salvar" />
+				</p:toolbarGroup>
+				<p:toolbarGroup>
+					<p:button value="Limpar" outcome="/financeiro/pesquisarRegistroFinanceiro" />
 				</p:toolbarGroup>
 
 				<p:toolbarGroup align="right">
-					<p:button value="Pesquisar" />
+					<p:button value="Pesquisar" outcome="/financeiro/pesquisarRegistroFinanceiro" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -54,36 +57,5 @@
 					value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.descricao}" />
 			</p:panelGrid>
 		</h:form>
-		
-		<p:dataTable id="lista-fatos" value="#{cadastroFatoFinanceiroBean.listaFatosFinanceiros}" 
-				sortBy="#{fato.data}" rows="10" paginator="true" paginatorPosition="bottom"
-				rowsPerPageTemplate="10, 20, 30"  paginatorAlwaysVisible="false"
-				var="fato" style="margin-top: 10px">
-			<p:column headerText="Data" sortBy="#{fato.data}" style="text-align: center" width="90">
-				<h:outputText value="#{fato.data}">
-					<f:convertDateTime pattern="dd/MM/yyyy" />
-				</h:outputText>
-			</p:column>
-			<p:column headerText="Responsavel" style="text-align: center" width="200" sortBy="#{fato.responsavel.nome}">
-				<h:outputText value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.responsavel.nome}" />
-			</p:column>
-			<p:column headerText="Status" sortBy="#{fato.status}" width="150">
-				<h:outputText value="#{fato.status}" />
-			</p:column>
-			<p:column headerText="Tipo Fato Financeiro" sortBy="#{fato.tipoFatoFinanceiro}" width="150">
-				<h:outputText value="#{fato.tipoFatoFinanceiro}" />
-			</p:column>
-			<p:column headerText="Valor" sortBy="#{fato.valor}" width="120" style="text-align: right">
-				<h:outputText value="#{fato.valor}">
-					<f:convertNumber type="currency" />
-				</h:outputText>
-			</p:column>
-			<p:column headerText="Descrição">
-				<h:outputText value="#{fato.descricao}" />
-			</p:column>
-		</p:dataTable>
-
 	</ui:define>
-
-
 </ui:composition>
