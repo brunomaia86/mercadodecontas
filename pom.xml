@@ -6,7 +6,7 @@
 	<artifactId>mercadodecontas</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Mercado De Compras</name>
+	<name>mercadodecompras</name>
 	<description>Sistema de gestão de contas domésticas</description>
 
 	<properties>
@@ -77,12 +77,10 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.5</version>
 		</dependency>
-
-
 	</dependencies>
 
 	<build>
-		<finalName>MercadoDeCompras</finalName>
+		<finalName>mercadodecontas</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
