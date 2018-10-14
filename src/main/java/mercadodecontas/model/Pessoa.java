@@ -19,7 +19,7 @@ public class Pessoa extends BaseEntity {
 	@Column(nullable = true, length = 150)
 	private String nome;
 	
-	@CPF
+	/*@CPF*/
 	@NotBlank
 	@Column(nullable = false)
 	private String cpf;

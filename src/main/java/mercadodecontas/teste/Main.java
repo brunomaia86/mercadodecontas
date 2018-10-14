@@ -24,7 +24,9 @@ public class Main {
 
 		Pessoa bruno = new Pessoa();
 		bruno.setNome("Bruno Maia");
-		bruno.setCpf("973272163-20");
+		bruno.setLogin("brunomaia86");
+		bruno.setEmail("brunomaia86@gmail.com");
+		bruno.setCpf("97327216320");
 		
 		
 		FatoFinanceiro fato = new FatoFinanceiro();
