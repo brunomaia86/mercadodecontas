@@ -37,11 +37,11 @@
 				<p:outputLabel value="Data Fato Financeiro" />
 				<h:panelGroup>
 					<p:calendar id="data-fato-financeiro-inicial"
-					value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.data}"
+					value="#{fatoFinanceiroBean.fatoFinanceiro.data}"
 					effect="fold" showOn="button" pattern="dd-MM-yyyy" mask="true" size="10"/>
 					    a     
 					<p:calendar id="data-fato-financeiro-final"
-					value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.data}"
+					value="#{fatoFinanceiroBean.fatoFinanceiro.data}"
 					effect="fold" showOn="button" pattern="dd-MM-yyyy" mask="true" size="10" />
 				</h:panelGroup>
 				
@@ -85,7 +85,7 @@
 			</p:panelGrid>
 		</h:form>
 		
-		<p:dataTable id="lista-fatos" value="#{cadastroFatoFinanceiroBean.listaFatosFinanceiros}" 
+		<p:dataTable id="lista-fatos" value="#{fatoFinanceiroBean.listaFatosFinanceiros}" 
 				sortBy="#{fato.data}" rows="15" paginator="true" paginatorPosition="bottom"
 				rowsPerPageTemplate="10, 20, 30"  paginatorAlwaysVisible="false"
 				var="fato" style="margin-top: 10px" emptyMessage="Nenhum registro encontrado">
@@ -98,7 +98,7 @@
 				</h:outputText>
 			</p:column>
 			<p:column headerText="Responsavel" style="text-align: center" width="200" sortBy="#{fato.responsavel.nome}">
-				<h:outputText value="#{cadastroFatoFinanceiroBean.fatoFinanceiro.responsavel.nome}" />
+				<h:outputText value="#{fatoFinanceiroBean.fatoFinanceiro.responsavel.nome}" />
 			</p:column>
 			<p:column headerText="Status" sortBy="#{fato.status}" width="150">
 				<h:outputText value="#{fato.status}" />
