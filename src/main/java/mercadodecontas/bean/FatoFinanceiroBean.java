@@ -11,29 +11,36 @@ import mercadodecontas.service.FatoFinanceiroService;
 
 @Named
 @RequestScoped
-public class CadastroFatoFinanceiroBean implements Serializable {
+public class FatoFinanceiroBean implements Serializable {
 
-	private static final long serialVersionUID = -7476328032330398810L;
+	private static final long serialVersionUID = -6221646242159618869L;
 
 	@Inject
-	private FatoFinanceiroService cadastroFatoFinanceiroService;
+	private FatoFinanceiroService fatoFinanceiroService;
 	
 	private FatoFinanceiro fatoFinanceiro = new FatoFinanceiro();
-
-	public String cadastrar() {
-		fatoFinanceiro = new FatoFinanceiro();
-		cadastroFatoFinanceiroService.
+	
+	public void cadastrar() {
+		fatoFinanceiroService.
 			getListaFatosFinanceiros().add(fatoFinanceiro);
-		
-		return "pesquisarRegistroFinanceiro.xhtml";
+		fatoFinanceiro = new FatoFinanceiro();
 	}
-
+	
 	public FatoFinanceiro getFatoFinanceiro() {
 		return fatoFinanceiro;
 	}
 
 	public void setFatoFinanceiro(FatoFinanceiro fatoFinanceiro) {
 		this.fatoFinanceiro = fatoFinanceiro;
+	}
+
+
+	public FatoFinanceiroService getFatoFinanceiroService() {
+		return fatoFinanceiroService;
+	}
+
+	public void setFatoFinanceiroService(FatoFinanceiroService fatoFinanceiroService) {
+		this.fatoFinanceiroService = fatoFinanceiroService;
 	}
 
 }
