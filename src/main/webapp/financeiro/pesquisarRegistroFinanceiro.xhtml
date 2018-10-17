@@ -181,7 +181,7 @@
 
 				<p:panelGrid columns="2" style="margin-top: 10px; float: right; ">
 					<p:commandButton value="Cancelar" type="button"
-						onclick="PF('cadRegFinanceiroModal').hide();$('#form').trigger('reset');" />
+						onclick="PF('cadRegFinanceiroModal').hide();" />
 					<p:commandButton value="Salvar"
 						action="#{fatoFinanceiroBean.cadastrar}" 
 						update="lista-fatos pgCadastroFatoFinanceiro frmPesquisa:growl" 
