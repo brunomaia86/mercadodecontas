@@ -12,7 +12,9 @@
 		
 		<script>
 			function tratarInclusaoFatoFinanceiro(args) {
-				if (!args.validationFailed) {
+				if(args.validationFailed) {
+		            PF('cadRegFinanceiroModal').jq.effect("shake", {times:5}, 100);
+				}else{
 					PF('cadRegFinanceiroModal').hide();
 				}
 			}
@@ -21,6 +23,9 @@
 		<h1>Pesquisar Registros Financeiros</h1>
 
 		<h:form id="frmPesquisa">
+			
+			<p:growl id="growl" sticky="true" showDetail="true" life="10" />
+			
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
 					<p:button value="Pesquisar" />
@@ -130,7 +135,9 @@
 		<p:dialog header="Cadastrar Registro Financeiro" 
 			widgetVar="cadRegFinanceiroModal"
 			modal="true"
-			closeOnEscape="true">
+			closeOnEscape="true"
+			showEffect="fade" 
+			hideEffect="explode">
 
 			<h:form id="frmCadastro">
 				<h:panelGroup id="pgCadastroFatoFinanceiro">
@@ -173,11 +180,11 @@
 
 
 				<p:panelGrid columns="2" style="margin-top: 10px; float: right; ">
-					<p:commandButton value="Cancelar"
-						onclick="cadRegFinanceiroModal.hide(); return false;" />
+					<p:commandButton value="Cancelar" type="button"
+						onclick="PF('cadRegFinanceiroModal').hide();$('#form').trigger('reset');" />
 					<p:commandButton value="Salvar"
 						action="#{fatoFinanceiroBean.cadastrar}" 
-						update="lista-fatos pgCadastroFatoFinanceiro" 
+						update="lista-fatos pgCadastroFatoFinanceiro frmPesquisa:growl" 
 						oncomplete="tratarInclusaoFatoFinanceiro(args)"/>
 				</p:panelGrid>
 

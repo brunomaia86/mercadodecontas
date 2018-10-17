@@ -3,6 +3,8 @@ package mercadodecontas.bean;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,6 +26,9 @@ public class FatoFinanceiroBean implements Serializable {
 		fatoFinanceiroService.
 			getListaFatosFinanceiros().add(fatoFinanceiro);
 		fatoFinanceiro = new FatoFinanceiro();
+		
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Muito Bem", "Incluido com sucesso");
+		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
 	public FatoFinanceiro getFatoFinanceiro() {
