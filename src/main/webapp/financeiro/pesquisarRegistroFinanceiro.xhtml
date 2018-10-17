@@ -24,7 +24,7 @@
 
 		<h:form id="frmPesquisa">
 			
-			<p:growl id="growl" sticky="true" showDetail="true" life="10" />
+			<p:growl id="growl" autoUpdate="true" showDetail="true" life="3000" />
 			
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
@@ -184,7 +184,7 @@
 						onclick="PF('cadRegFinanceiroModal').hide();" />
 					<p:commandButton value="Salvar"
 						action="#{fatoFinanceiroBean.cadastrar}" 
-						update="lista-fatos pgCadastroFatoFinanceiro frmPesquisa:growl" 
+						update="lista-fatos pgCadastroFatoFinanceiro" 
 						oncomplete="tratarInclusaoFatoFinanceiro(args)"/>
 				</p:panelGrid>
 

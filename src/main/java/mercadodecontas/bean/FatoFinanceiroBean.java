@@ -27,7 +27,7 @@ public class FatoFinanceiroBean implements Serializable {
 			getListaFatosFinanceiros().add(fatoFinanceiro);
 		fatoFinanceiro = new FatoFinanceiro();
 		
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Muito Bem", "Incluido com sucesso");
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Concluído!!!", "Fato salvo com sucesso");
 		FacesContext.getCurrentInstance().addMessage(null, message);
 	}
 	
