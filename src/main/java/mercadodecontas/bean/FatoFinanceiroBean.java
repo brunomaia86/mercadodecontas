@@ -31,6 +31,12 @@ public class FatoFinanceiroBean implements Serializable {
 		FacesContext.getCurrentInstance().addMessage("growlMessages", message);
 	}
 	
+	public void remover() {
+		fatoFinanceiroService.getListaFatosFinanceiros().remove(fatoFinanceiro);
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso!!!", "Fato Removido com sucesso");
+		FacesContext.getCurrentInstance().addMessage("growlMessages", message);
+	}
+	
 	public FatoFinanceiro getFatoFinanceiro() {
 		return fatoFinanceiro;
 	}
