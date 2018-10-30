@@ -5,9 +5,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
-import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name = "tb_pessoa")
@@ -15,19 +12,19 @@ public class Pessoa extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@NotBlank
-	@Column(nullable = true, length = 150)
+	//@NotBlank
+	@Column(nullable = true)
 	private String nome;
 	
 	/*@CPF*/
-	@NotBlank
-	@Column(nullable = false)
+	//@NotBlank
+	@Column(nullable = true)
 	private String cpf;
 
-	@NotBlank
+	//@NotBlank
 	private String login;
 	
-	@NotBlank
+	//@NotBlank
 	@Email
 	private String email;
 	

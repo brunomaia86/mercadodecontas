@@ -20,22 +20,22 @@ public class FatoFinanceiro extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Date data;
 	
 	@ManyToOne
-	@JoinColumn(name = "pessoa_id", nullable = false)
+	@JoinColumn(name = "pessoa_id", nullable = true)
 	private Pessoa responsavel;
 	
 	@Column(nullable = true)
 	private BigDecimal valor;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = true, length = 15)
+	@Column(nullable = true)
 	private Status status;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(nullable = true, length = 12)
+	@Column(nullable = true)
 	private TipoFatoFinanceiro tipoFatoFinanceiro;
 	
 	@Column(nullable = true)
